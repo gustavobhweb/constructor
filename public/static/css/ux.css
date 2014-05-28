@@ -16,10 +16,14 @@
 .txt-default:focus{background:#ffffff;font-style:normal;}
 
 
-.content-menu p{text-align: right;margin:4px 10px 0 0;font-family:Calibri;color:#069;}
+.content-menu td{text-align: right;font-family:Calibri;color:#069;padding-top:5px;}
 
 .canvasArea{width:70%;height:50%;background:#fff;border:1px solid #CCCCCC;position:relative;top:100px;left:20px;}
 
 .txt-id-object{position:absolute;top:20px;left:20px;padding:6px;font-size:20px;font-weight: lighter;width:500px;}
+
+.ui-icon{
+    background-image: url("") !important;
+}
 
 .clear{clear:both;}

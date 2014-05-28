@@ -38,13 +38,40 @@
 			</div><!--menu-title-->
 
 			<div class='content-menu'>
-				<p>Width: <input type='text' class='txt-default' id='txt-width' /></p>
-				<p>Height: <input type='text' class='txt-default' id='txt-height' /></p>
-				<p>Background: <input type='text' class='txt-default' id='txt-background' /></p>
-				<p>Top Left Rd: <input type='text' class='txt-default' id='txt-tlr' style='width:50px' /><div id='slider-tlr' style='width:100px;float:right'></div></p>
-				<p>Top Right Rd: <input type='text' class='txt-default' id='txt-trd' /></p>
-				<p>Bottom Right Rd: <input type='text' class='txt-default' id='txt-brr' /></p>
-				<p>Bottom Left Rd: <input type='text' class='txt-default' id='txt-blr' /></p>
+				<table border='0'>
+					<tr>
+						<td>Width:</td>
+						<td colspan="2"><input type='text' class='txt-default' id='txt-width' /></td>
+					</tr>
+					<tr>
+						<td>Height:</td>
+						<td colspan="2"><input type='text' class='txt-default' id='txt-height' /></td>
+					</tr>
+					<tr>
+						<td>Background:</td>
+						<td colspan="2"><input type='text' class='txt-default' id='txt-background' /></td>
+					</tr>
+					<tr>
+						<td>Top Left Rd:</td>
+						<td style='width:170px;padding:0 20px'><div id='slider-tlr' style='width:100%'></div></td>
+						<td><input type='text' style='width:50px' class='txt-default' id='txt-tlr' /></td>
+					</tr>
+					<tr>
+						<td>Top Right Rd:</td>
+						<td style='width:170px;padding:0 20px'><div id='slider-trr' style='width:100%'></div></td>
+						<td><input type='text' style='width:50px' class='txt-default' id='txt-trr' /></td>
+					</tr>
+					<tr>
+						<td>Bottom Right Rd:</td>
+						<td style='width:170px;padding:0 20px'><div id='slider-brr' style='width:100%'></div></td>
+						<td><input type='text' style='width:50px' class='txt-default' id='txt-brr' /></td>
+					</tr>
+					<tr>
+						<td>Bottom Left Rd:</td>
+						<td style='width:170px;padding:0 20px'><div id='slider-blr' style='width:100%'></div></td>
+						<td><input type='text' style='width:50px' class='txt-default' id='txt-blr' /></td>
+					</tr>
+				</table>
 			</div><!--content-menu-->
 
 		</div><!--menu-->
