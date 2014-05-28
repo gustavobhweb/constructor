@@ -83,18 +83,11 @@ function Obj()
 		return $data;
 	}
 
-	this.Create = function(id, type)
+	this.Create = function(id)
 	{
-		if(type==null)
-		{
-			this.data.obj = $('<div></div>');
-		}
-		else if(type=='text')
-		{
-			this.data.obj = $('<p>Insira um texto</p>');
-			this.data.obj.css('cursor', 'default');
-		}
-		$('#configs').find('.menu-title').html('Configurações - '+id)
+		this.data.obj = $('<div></div>');
+		$('#configs').show();
+		$('#configs').find('.menu-title').html('Configurações - '+id);
 		this.data.obj.attr('id', id);
 		this.data.obj.attr('class', 'objCreated');
 		this.data.obj.css('position', 'absolute');
@@ -102,14 +95,7 @@ function Obj()
 		this.data.id = id;
 
 		this.data.obj.appendTo('#canvasArea');
-		if(type==null)
-		{
-			this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
-		}
-		else
-		{
-			this.Select({width: '110px', left: 0, top: 0});
-		}
+		this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
 	}
 
 	this.Change = function(data)
@@ -123,12 +109,17 @@ function Obj()
 		if(verify(data.id))
 		{
 			this.data.obj = $('#'+data.id);
+			$('#configs').show();
 			$('#configs').find('.menu-title').html('Configurações - '+data.id);
+			$('#txt-id-object').show();
+			$('#txt-id-object').val(data.id);
 			this.data.obj.css('outline', '#00FF00 dotted 2px');
 			this.Set(data);
 		}
 		else
 		{
+			$('#txt-id-object').show();
+			$('#txt-id-object').val(this.data.id);
 			this.data.obj.css('outline', '#00FF00 dotted 2px');
 			this.Set(data);
 		}
@@ -136,6 +127,10 @@ function Obj()
 
 	this.Unselect = function()
 	{
+		$('#configs').hide();
+		$('#txt-id-object').hide(0, function(){
+			$(this).val('');
+		});
 		this.selected = false;
 		this.data.obj.css('outline', 'none');
 	}

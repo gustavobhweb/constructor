@@ -1,6 +1,8 @@
 var obj = new Obj();
 function ObjClick()
 {
+    $('.objCreated').resizable();
+    $('.objCreated').draggable();
     $('.objCreated').click(function(e){
         var $id = $(this).attr('id');
         obj.Unselect();
@@ -39,25 +41,6 @@ $(document).ready(function(){
             obj.Unselect();
         }
         obj.Create(nameObj());
-        $('.objCreated').resizable();
-        $('.objCreated').draggable();
-
-        ObjClick();
-
-        $('.canvasArea').click(function(){
-            obj.Unselect();
-        });
-
-    });
-
-    $('#btn-new-text').click(function(){
-        if(verify(obj.data.id))
-        {
-            obj.Unselect();
-        }
-        obj.Create(nameObj(), 'text');
-        $('.objCreated').resizable();
-        $('.objCreated').draggable();
 
         ObjClick();
 
@@ -194,9 +177,19 @@ $(document).ready(function(){
         /* DELETE */
         if(e.keyCode==46)
         {
+            obj.Unselect();
             obj.data.obj.remove();
         }
         /* DELETE */
+    });
+
+    $('#txt-id-object').keyup(function(e){
+        obj.data.id = $(this).val().replace(' ', '-');
+        obj.data.obj.attr('id', obj.data.id);
+        if(e.keyCode==32)
+        {
+            $(this).val($(this).val().replace(' ', '-'));
+        }
     });
 
 });

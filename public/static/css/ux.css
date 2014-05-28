@@ -1,7 +1,7 @@
 *{margin:0;padding:0}
 .configs{position:fixed;left:0;top:0;width:30%;height:100%;background:#eeeeee;box-shadow:inset -5px 0 30px 5px #dddddd;}
 .configs .header-configs{float:left;width:100%}
-.configs .header-configs img{float:left;margin:20px 0 0 100px;}
+.configs .header-configs img{float:left;margin:40px 0 0 80px;}
 .configs .header-configs p{float:left;margin:5px 0 0 100px;font:16px Calibri;font-style:italic;}
 .canvas{position:fixed;right:0;top:0;width:70%;height:100%;background:whitesmoke;overflow:auto;}
 
@@ -26,7 +26,7 @@
     background-image: url("") !important;
 }
 
-.btn-send{padding:3px 8px;outline:none;border:none;background:#3C6CFF;color:#ffffff;cursor: pointer;border-radius:3px;border:1px solid #006699;}
+.btn-send{padding:3px 15px;outline:none;border:none;background:#3C6CFF;color:#ffffff;cursor: pointer;border-radius:3px;border:1px solid #006699;font:20px Calibri;}
 .btn-send:hover{opacity:.8}
 .btn-send:active{opacity:.8;box-shadow: inset 0 0 4px #000}
 
