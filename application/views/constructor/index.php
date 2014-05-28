@@ -25,7 +25,8 @@
 				Objetos
 			</div><!--menu-title-->
 
-			<button class='btn-send' id='btn-new-object' style='float:left;margin:10px 0 0 10px'>+ Novo objeto</button>
+			<button class='btn-send' id='btn-new-object' style='float:left;margin:10px 0 0 10px'>+ Nova caixa</button>
+			<button class='btn-send' id='btn-new-text' style='float:left;margin:10px 0 0 10px'>+ Novo texto</button>
 
 			<div class='clear'></div>
 

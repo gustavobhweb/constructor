@@ -74,7 +74,7 @@ function Obj()
 		var $obj = $('#'+id);
 		var $data = {width: $obj.css('width'),
 					 height: $obj.css('height'),
-					 background: $obj.css('background-color'),
+					 background: $obj.css('background'),
 					 tlr: $obj.css('border-top-left-radius'),
 					 trr: $obj.css('border-top-right-radius'),
 					 brr: $obj.css('border-bottom-right-radius'),
@@ -83,9 +83,17 @@ function Obj()
 		return $data;
 	}
 
-	this.Create = function(id)
+	this.Create = function(id, type)
 	{
-		this.data.obj = $('<div></div>');
+		if(type==null)
+		{
+			this.data.obj = $('<div></div>');
+		}
+		else if(type=='text')
+		{
+			this.data.obj = $('<p>Insira um texto</p>');
+			this.data.obj.css('cursor', 'default');
+		}
 		$('#configs').find('.menu-title').html('Configurações - '+id)
 		this.data.obj.attr('id', id);
 		this.data.obj.attr('class', 'objCreated');
@@ -94,7 +102,14 @@ function Obj()
 		this.data.id = id;
 
 		this.data.obj.appendTo('#canvasArea');
-		this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
+		if(type==null)
+		{
+			this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
+		}
+		else
+		{
+			this.Select({width: '110px', left: 0, top: 0});
+		}
 	}
 
 	this.Change = function(data)
