@@ -15,14 +15,24 @@ $(document).ready(function(){
             obj.Unselect();
             obj.Select(obj.Get($id));
             e.stopPropagation();
+
+            if(obj.selected)
+            {
+                $('.objCreated').resizable();
+                $('.objCreated').draggable();
+            }
+
+            $(window).keyup(function(e){
+                var left = obj.data.obj.css('left');
+                var top = obj.data.obj.css('top');
+
+                e.stopPropagation();
+            });
         });
 
         $('.canvasArea').click(function(){
             obj.Unselect();
         });
-
-        $('.objCreated').resizable();
-        $('.objCreated').draggable();
 
     });
 

@@ -19,8 +19,9 @@ function Data()
 
 function Obj()
 {
-	var data;
+	var data, selected;
 	this.data = new Data();
+	this.selected = false;
 
 	this.Set = function(data)
 	{
@@ -103,6 +104,7 @@ function Obj()
 
 	this.Select = function(data)
 	{
+		this.selected = true;
 		if(verify(data.id))
 		{
 			this.data.obj = $('#'+data.id);
@@ -119,6 +121,7 @@ function Obj()
 
 	this.Unselect = function()
 	{
+		this.selected = false;
 		this.data.obj.css('outline', 'none');
 	}
 
