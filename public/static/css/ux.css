@@ -18,7 +18,7 @@
 
 .content-menu td{text-align: right;font-family:Calibri;color:#069;padding-top:5px;}
 
-.canvasArea{width:70%;height:50%;background:#fff;border:1px solid #CCCCCC;position:relative;top:100px;left:20px;}
+.canvasArea{width:90%;height:70%;background:#fff;border:1px solid #CCCCCC;position:relative;top:100px;left:20px;}
 
 .txt-id-object{position:absolute;top:20px;left:20px;padding:6px;font-size:20px;font-weight: lighter;width:500px;}
 

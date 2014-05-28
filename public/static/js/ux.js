@@ -1,4 +1,5 @@
 var obj = new Obj();
+var dataCopy;
 function ObjClick()
 {
     $('.objCreated').resizable();
@@ -32,6 +33,10 @@ function nameObj()
     {
         return name1;
     }
+}
+function getDataCopy()
+{
+    return dataCopy;
 }
 $(document).ready(function(){
 
@@ -140,7 +145,7 @@ $(document).ready(function(){
     });
 
     var ctrlDown = false;
-    var ctrlKey = 17, vKey = 86, cKey = 67, dataCopy;
+    var ctrlKey = 17, vKey = 86, cKey = 67;
 
     $(document).keydown(function(e)
     {
@@ -155,7 +160,7 @@ $(document).ready(function(){
         /* CTRL + C and CTRL + V */
         if (ctrlDown && (e.keyCode == cKey))
         {
-            dataCopy = obj.data;
+            dataCopy = obj.Get(obj.data.id);
         }
         else if (ctrlDown && (e.keyCode == vKey)) 
         {
@@ -164,7 +169,7 @@ $(document).ready(function(){
                 obj.Unselect();
             }
             obj.Create(nameObj());
-            obj.Change(dataCopy);
+            obj.Change(getDataCopy());
 
             ObjClick();
 

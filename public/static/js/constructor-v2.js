@@ -83,7 +83,7 @@ function Obj()
 		return $data;
 	}
 
-	this.Create = function(id)
+	this.Create = function(id, data)
 	{
 		this.data.obj = $('<div></div>');
 		$('#configs').show();
@@ -95,7 +95,14 @@ function Obj()
 		this.data.id = id;
 
 		this.data.obj.appendTo('#canvasArea');
-		this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
+		if(!verify(data))
+		{
+			this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
+		}
+		else
+		{
+			this.Select(data);
+		}
 	}
 
 	this.Change = function(data)
