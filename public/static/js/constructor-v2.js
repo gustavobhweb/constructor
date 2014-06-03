@@ -1,3 +1,22 @@
+function Checkpoint()
+{
+	var checklist;
+	this.checklist = new Array();
+
+	this.Set = function()
+	{
+		var canvas = document.getElementById('canvasArea');
+		canvas = canvas.innerHTML.replace('  ', '');
+    	this.checklist.push(canvas);
+	}
+
+	this.Get = function()
+	{
+		return this.checklist[this.checklist.length];
+	}
+
+}
+
 function verify(s)
 {
 	if(s==null || typeof(s)=='undefined' || s=='')
@@ -12,9 +31,9 @@ function verify(s)
 
 function Data()
 {
-	var obj, id;
+	var obj, id, ckp;
 	
-	var width, height, background, tlr, trr, brr, brl;
+	var width, height, background, tlr, trr, brr, brl, left, top, right, bottom;
 }
 
 function Obj()
@@ -22,6 +41,7 @@ function Obj()
 	var data, selected;
 	this.data = new Data();
 	this.selected = false;
+	this.data.ckp = new Checkpoint();
 
 	this.Set = function(data)
 	{
@@ -67,6 +87,29 @@ function Obj()
 			this.data.obj.css('border-bottom-left-radius', this.data.blr);
 			$('#txt-blr').val(data.blr);
 		}
+		if (verify(data.left)) {
+			this.data.left = data.left;
+			this.data.obj.css('left', this.data.left);
+			$('#txt-left').val(data.left);
+		}
+		if(verify(data.top))
+		{
+			this.data.top = data.top;
+			this.data.obj.css('top', this.data.top);
+			$('#txt-top').val(data.top);
+		}
+		if(verify(data.right))
+		{
+			this.data.right = data.right;
+			this.data.obj.css('right', this.data.right);
+			$('#txt-right').val(data.right);
+		}
+		if(verify(data.bottom))
+		{
+			this.data.bottom = data.bottom;
+			this.data.obj.css('bottom', this.data.bottom);
+			$('#txt-bottom').val(data.bottom);
+		}
 	}
 
 	this.Get = function(id)
@@ -79,6 +122,10 @@ function Obj()
 					 trr: $obj.css('border-top-right-radius'),
 					 brr: $obj.css('border-bottom-right-radius'),
 					 blr: $obj.css('border-bottom-left-radius'),
+					 left: $obj.css('left'),
+					 top: $obj.css('top'),
+					 right: $obj.css('right'),
+					 bottom: $obj.css('bottom'),
 					 id: id};
 		return $data;
 	}
@@ -94,7 +141,7 @@ function Obj()
 
 		this.data.id = id;
 
-		this.data.obj.appendTo('#canvasArea');
+		this.data.obj.appendTo('#nameProject');
 		if(!verify(data))
 		{
 			this.Select({width: '100px', height: '100px', left: 0, top: 0, background: '#ADD555'});
@@ -107,6 +154,7 @@ function Obj()
 
 	this.Change = function(data)
 	{
+		this.data.ckp.Set();
 		this.Set(data);
 	}
 
@@ -146,4 +194,8 @@ function Obj()
 	{
 
 	}
+}
+function base(url){
+	var l = window.location;
+	return base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1]+url;
 }

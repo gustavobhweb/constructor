@@ -6,7 +6,10 @@ function ObjClick()
     $('.objCreated').draggable();
     $('.objCreated').click(function(e){
         var $id = $(this).attr('id');
-        obj.Unselect();
+        if(verify(obj.data.obj))
+        {
+            obj.Unselect();
+        }
         obj.Select(obj.Get($id));
         e.stopPropagation();
 
@@ -22,7 +25,7 @@ var n=0;
 function nameObj()
 {
     n++;
-    var name = 'untitled'+$('#canvasArea').find('.objCreated').size();
+    var name = 'untitled'+$('#nameProject').find('.objCreated').size();
     var name1 = 'untitled'+n;
 
     if($('#'+name).length<=0)
@@ -39,6 +42,20 @@ function getDataCopy()
     return dataCopy;
 }
 $(document).ready(function(){
+
+    $('#importObj').keyup(function(e){
+        if(e.keyCode==13)
+        {
+            $('#nameProject').html($('#nameProject').html()+$(this).val());
+            ObjClick();
+            $(this).hide();
+        }
+        e.stopPropagation();
+    });
+
+    $('#importObj').keydown(function(e){
+        e.stopPropagation();
+    });
 
     $('#btn-new-object').click(function(){
         if(verify(obj.data.id))
@@ -144,8 +161,108 @@ $(document).ready(function(){
         }
     });
 
+    // LEFT
+    $('#txt-left').keyup(function(e){
+        if (e.keyCode == 13) {
+            if (verify(obj.data.id)) {
+                if ($(this).val() == '') {
+                    $(this).val('0px');
+                }
+                obj.Change({left: $(this).val()});
+            } else {
+                alert('Selecione ou crie um objeto.');
+            }
+        }
+    });
+
+    $('#txt-left').blur(function(){
+        if (verify(obj.data.id)) {
+            if ($(this).val() == '') {
+                $(this).val('0px');
+            }
+            obj.Change({left: $(this).val()});
+        } else {
+            alert('Selecione ou crie um objeto.');
+        }
+    });
+
+    // TOP
+    $('#txt-top').keyup(function(e){
+        if (e.keyCode == 13) {
+            if (verify(obj.data.id)) {
+                if ($(this).val() == '') {
+                    $(this).val('0px');
+                }
+                obj.Change({top: $(this).val()});
+            } else {
+                alert('Selecione ou crie um objeto.');
+            }
+        }
+    });
+
+    $('#txt-top').blur(function(){
+        if (verify(obj.data.id)) {
+            if ($(this).val() == '') {
+                $(this).val('0px');
+            }
+            obj.Change({top: $(this).val()});
+        } else {
+            alert('Selecione ou crie um objeto.');
+        }
+    });
+
+    // RIGHT
+    $('#txt-right').keyup(function(e){
+        if (e.keyCode == 13) {
+            if (verify(obj.data.id)) {
+                if ($(this).val() == '') {
+                    $(this).val('0px');
+                }
+                obj.Change({right: $(this).val()});
+            } else {
+                alert('Selecione ou crie um objeto.');
+            }
+        }
+    });
+
+    $('#txt-right').blur(function(e){
+        if (verify(obj.data.id)) {
+            if ($(this).val() == '') {
+                $(this).val('0px');
+            }
+            obj.Change({right: $(this).val()});
+        } else {
+            alert('Selecione ou crie um objeto.');
+        }
+    });
+
+    // BOTTOM
+    $('#txt-bottom').keyup(function(e){
+        if (e.keyCode == 13) {
+            if (verify(obj.data.id)) {
+                if ($(this).val() == '') {
+                    $(this).val('0px');
+                }
+                obj.Change({bottom: $(this).val()});
+            } else {
+                alert('Selecione ou crie um objeto.');
+            }
+        }
+    });
+
+    $('#txt-bottom').blur(function(e){
+        if (verify(obj.data.id)) {
+            if ($(this).val() == '') {
+                $(this).val('0px');
+            }
+            obj.Change({bottom: $(this).val()});
+        } else {
+            alert('Selecione ou crie um objeto.');
+        }
+    });
+
     var ctrlDown = false;
-    var ctrlKey = 17, vKey = 86, cKey = 67;
+    var ctrlKey = 17, vKey = 86, cKey = 67, zKey = 90;
 
     $(document).keydown(function(e)
     {
@@ -155,17 +272,19 @@ $(document).ready(function(){
         if (e.keyCode == ctrlKey) ctrlDown = false;
     });
 
+    $('input').keydown(function(e){
+        e.stopPropagation();
+    });
+
     $(document).keydown(function(e)
     {
         /* CTRL + C and CTRL + V */
-        if (ctrlDown && (e.keyCode == cKey))
-        {
+        if (ctrlDown && (e.keyCode == cKey)) {
             dataCopy = obj.Get(obj.data.id);
         }
         else if (ctrlDown && (e.keyCode == vKey)) 
         {
-            if(verify(obj.data.id))
-            {
+            if (verify(obj.data.id)) {
                 obj.Unselect();
             }
             obj.Create(nameObj());
@@ -179,13 +298,72 @@ $(document).ready(function(){
         }
         /* CTRL + C and CTRL + V */
 
+        /* CTRL + Z */
+        if (ctrlDown && (e.keyCode == zKey)) {
+            // console.log(obj.data.ckp.Get());
+            // $('#canvasArea').html(obj.data.ckp.checklist);
+        }
+        /* CTRL + Z */
+
         /* DELETE */
-        if(e.keyCode==46)
-        {
+        if (e.keyCode==46) {
             obj.Unselect();
             obj.data.obj.remove();
         }
         /* DELETE */
+
+        /* AROWS*/
+
+            var leftVal, topVal, rightVal, bottomVal;
+            
+            // Left
+            if (e.keyCode == 37) {
+                if (leftVal == '') {
+                    $('#txt-left').val('0px');
+                    obj.Change({left: '0px'});
+                }
+                leftVal = obj.data.obj.css('left');
+                leftVal = parseInt(leftVal.replace('px', ''));
+                leftVal--;
+                obj.Change({left: leftVal+'px'});
+            }
+
+            // Top
+            else if (e.keyCode == 38) {
+                if (topVal == '') {
+                    $('#txt-top').val('0px');
+                    obj.Change({top: '0px'});
+                }
+                topVal = obj.data.obj.css('top');
+                topVal = parseInt(topVal.replace('px', ''));
+                topVal--;
+                obj.Change({top: topVal+'px'});
+            }
+
+            // Right
+            else if (e.keyCode == 39) {
+                if (rightVal == '') {
+                    $('#txt-right').val('0px');
+                    obj.Change({right: '0px'});
+                }
+                leftVal = obj.data.obj.css('left');
+                leftVal = parseInt(leftVal.replace('px', ''));
+                leftVal++;
+                obj.Change({left: leftVal+'px'});
+            }
+
+            // Bottom
+            else if (e.keyCode == 40) {
+                if (bottomVal == '') {
+                    $('#txt-bottom').val('0px');
+                    obj.Change({bottom: 0});
+                }
+                bottomVal = obj.data.obj.css('top');
+                bottomVal = parseInt(bottomVal.replace('px', ''));
+                bottomVal++;
+                obj.Change({top: bottomVal+'px'});
+            }
+        
     });
 
     $('#txt-id-object').keyup(function(e){
@@ -195,6 +373,33 @@ $(document).ready(function(){
         {
             $(this).val($(this).val().replace(' ', '-'));
         }
+    });
+
+    $(function() {
+        $('#colorpicker-preview').hide();
+        $('#txt-background').click(function(){
+            $('#colorpicker-preview').fadeIn();
+        });
+        $('#txt-background').colorpicker({
+            flat: true,
+            parts:          'full',
+            colorFormat: 'RGBA',
+            alpha:          true,
+            showOn:         'both',
+            buttonColorize: true,
+            showNoneButton: true,
+            regional: 'pt-br',
+            select: function(h, n){
+                obj.Change({background: n.formatted});
+            }
+        });
+        $('.ui-button-text').parent().css('outline', 'none');
+        $('.ui-button-text').find('img').each(function(){
+            $(this).attr('src', base("/public/static/css/images/ui-colorpicker.png"));
+        })
+        $('#colorpicker-preview').draggable({
+            handle: $('.ui-dialog-titlebar')
+        });
     });
 
 });
