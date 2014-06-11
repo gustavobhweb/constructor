@@ -32,8 +32,9 @@
 			</div><!--menu-title-->
 
 			<button class='btn-send' id='btn-new-object' style='float:left;margin:10px 0 0 10px'>+ Nova caixa</button>
-			<button class='btn-send' id='btn-load-object' style='float:left;margin:10px 0 0 10px' onclick='$("#importObj").show(0, function(){$(this).focus();});$("#importObj").val("")'>Importar objeto</button>
-			<button class='btn-send' id='btn-open-object' style='float:left;margin:10px 0 0 10px'>Abrir...</button>
+			<button class='btn-send' id='btn-load-object' style='float:left;margin:10px 0 0 10px' onclick='$("#importObj").show(0, function(){$(this).focus();});$("#importObj").val("")'>Importar</button>
+			<button class='btn-send' onclick='Save()' style='float:left;margin:10px 0 0 10px'>Exportar</button>
+			<!-- <button class='btn-send' id='btn-open-object' style='float:left;margin:10px 0 0 10px'>Abrir...</button> -->
 			<textarea id='importObj' class='txt-default' style='margin:10px 0 0 10px;width:90%;height:120px;display:none'></textarea>
 
 			<div class='clear'></div>
@@ -110,8 +111,6 @@
 		<div id='canvasArea' class='canvasArea'>
 			<div id='nameProject' style='position:relative;float:left;top:0;left:0;margin:0'></div>
 		</div><!--canvasArea-->
-
-		<button class='btn-send' onclick='Save()' style='position:fixed;bottom:30px;right:30px'>Salvar como HTML</button>
 
 	</div><!--canvas-->
 

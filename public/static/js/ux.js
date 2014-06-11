@@ -414,5 +414,17 @@ function Save()
 
     var canvas = document.getElementById('canvasArea');
     canvas = canvas.innerHTML.replace('  ', '');
-    console.log(canvas);
+    $.ajax({
+        url: 'index.php/constructor/Save/',
+        type: 'POST',
+        data: {sended: true,
+               canvas: canvas},
+        dataType: 'json',
+        success: function(data){
+            window.location.assign(data.path);
+        },
+        error: function(){
+            alert('Problemas na conexão! Atualize a página e tente novamente.');
+        }
+    });
 }
