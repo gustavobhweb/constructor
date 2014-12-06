@@ -417,8 +417,7 @@ function Save()
     $.ajax({
         url: 'index.php/constructor/Save/',
         type: 'POST',
-        data: {sended: true,
-               canvas: canvas},
+        data: {canvas: canvas},
         dataType: 'json',
         success: function(data){
             window.location.assign(data.path);
